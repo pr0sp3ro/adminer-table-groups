@@ -1,0 +1,71 @@
+#tables.adminer-prefix-groups {
+  padding-left: 0;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-group {
+  list-style: none;
+  margin: 0 0 0.35em;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-group > details > summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.45em;
+  line-height: 1.45;
+  padding: 0.18em 0;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-label {
+  font-weight: 700;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-count {
+  font-size: 0.86em;
+  opacity: 0.72;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-group ul {
+  margin: 0.12em 0 0.28em 1.25em;
+  padding-left: 0;
+}
+
+#tables.adminer-prefix-groups li[data-table-name] {
+  align-items: center;
+  display: flex;
+  gap: 0.35em;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-select-link {
+  align-items: center;
+  border-radius: 0.2em;
+  display: inline-flex;
+  float: none;
+  flex: 0 0 1.35em;
+  height: 1.35em;
+  justify-content: center;
+  line-height: 1;
+  min-width: 1.35em;
+  padding: 0;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-select-link:hover,
+#tables.adminer-prefix-groups .adminer-prefix-select-link:focus {
+  text-decoration: none;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-eye {
+  display: block;
+  height: 1em;
+  width: 1em;
+}
+
+#tables.adminer-prefix-groups .adminer-prefix-select-text {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
