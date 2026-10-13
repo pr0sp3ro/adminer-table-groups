@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Replace automatic prefix groups with user-defined groups stored in localStorage.
+- Add a compact management panel with group creation, renaming, deletion and assignments.
+- Target Adminer 6.1.2 and remove legacy wrappers and separator configuration.
+- Consolidate sidebar CSS in assets, preserving custom margins, and add browser JavaScript.
+- Add PL, EN and UK management labels and update installation and Docker examples.
+
 ## 0.1.0 - 2026-06-28
 
 ### Added

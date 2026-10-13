@@ -1,4 +1,6 @@
 #tables.adminer-prefix-groups {
+  margin-left: 0.75em;
+  margin-right: 0.75em;
   padding-left: 0;
 }
 
@@ -68,4 +70,49 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.adminer-groups-manager,
+.adminer-groups-notice {
+  margin: 0.5em 0.75em;
+}
+
+.adminer-groups-manager > summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.adminer-groups-editor {
+  margin: 0.5em 0;
+}
+
+.adminer-groups-editor label,
+.adminer-groups-assignments label {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.adminer-groups-editor input,
+.adminer-groups-assignments select {
+  box-sizing: border-box;
+  display: block;
+  margin: 0.25em 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.adminer-groups-editor button {
+  margin-right: 0.25em;
+}
+
+.adminer-groups-assignments {
+  border-top: 1px solid currentColor;
+  margin-top: 0.75em;
+  max-height: 22em;
+  overflow-y: auto;
+  padding-top: 0.5em;
+}
+
+.adminer-groups-notice:empty {
+  display: none;
 }

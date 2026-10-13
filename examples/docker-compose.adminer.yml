@@ -1,11 +1,9 @@
 services:
   adminer:
-    image: adminer:latest
+    image: adminer:6.1.2
     ports:
       - "8080:8080"
-    environment:
-      ADMINER_DESIGN: dracula
     volumes:
-      - ../docker/adminer5-plugin.php:/var/www/html/plugins-enabled/table-prefix-groups.php:ro
-      - ../table-prefix-groups.php:/var/www/html/table-prefix-groups.php:ro
-      - ../assets/adminer-prefix-groups.css:/var/www/html/adminer-prefix-groups.css:ro
+      - ../docker/adminer6-plugin.php:/var/www/html/plugins-enabled/table-prefix-groups.php:ro
+      - ../table-prefix-groups.php:/var/www/html/adminer-plugins/table-prefix-groups.php:ro
+      - ../assets:/var/www/html/adminer-plugins/assets:ro
