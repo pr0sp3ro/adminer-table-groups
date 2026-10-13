@@ -4,22 +4,22 @@ declare(strict_types=1);
 namespace Adminer;
 
 /** Organize sidebar tables using browser-local, user-defined groups. */
-class AdminerTablePrefixGroups extends Plugin
+class AdminerTableGroups extends Plugin
 {
     public function __construct(
-        private string $cssFile = 'adminer-plugins/assets/adminer-prefix-groups.css',
+        private string $cssFile = 'adminer-plugins/assets/table-groups.css',
         private ?string $otherLabel = null,
         private ?string $tableCountLabel = null,
         private ?string $viewCountLabel = null,
         private bool $useSelectIcon = true,
-        private string $jsFile = 'adminer-plugins/assets/adminer-prefix-groups.js',
+        private string $jsFile = 'adminer-plugins/assets/table-groups.js',
     ) {
     }
 
     public function head(?bool $dark = null): void
     {
-        $cssVersion = crc32((string) file_get_contents(__DIR__ . '/assets/adminer-prefix-groups.css'));
-        $jsVersion  = crc32((string) file_get_contents(__DIR__ . '/assets/adminer-prefix-groups.js'));
+        $cssVersion = crc32((string) file_get_contents(__DIR__ . '/assets/table-groups.css'));
+        $jsVersion  = crc32((string) file_get_contents(__DIR__ . '/assets/table-groups.js'));
 
         echo '<link rel="stylesheet" href="' . h($this->cssFile . '?v=' . $cssVersion) . '">' . "\n";
         echo script_src($this->jsFile . '?v=' . $jsVersion, true);
@@ -27,7 +27,7 @@ class AdminerTablePrefixGroups extends Plugin
 
     public function tablesPrint(array $tables): ?bool
     {
-        $labels = $this->prefixGroupsLabels();
+        $labels = $this->groupsLabels();
         $config = [
             'context' => [
                 DRIVER,
@@ -39,7 +39,7 @@ class AdminerTablePrefixGroups extends Plugin
             'labels'  => $labels,
         ];
 
-        echo '<ul id="tables" class="adminer-prefix-groups" data-groups-config="'
+        echo '<ul id="tables" class="table-groups" data-groups-config="'
             . h((string) json_encode($config, JSON_INVALID_UTF8_SUBSTITUTE)) . '"'
             . on('mouseover', 'menuOver') . on('mouseout', 'menuOut') . '>';
 
@@ -53,8 +53,8 @@ class AdminerTablePrefixGroups extends Plugin
             $name = (string) $name;
 
             echo '<li data-table-name="' . h($name) . '" data-view="' . (is_view($status) ? '1' : '0') . '">';
-            echo $this->prefixGroupsRenderSelectLink($name) . ' ';
-            echo $this->prefixGroupsRenderStructureLink($name, $status, $displayName);
+            echo $this->groupsRenderSelectLink($name) . ' ';
+            echo $this->groupsRenderStructureLink($name, $status, $displayName);
             echo "</li>\n";
         }
 
@@ -63,7 +63,7 @@ class AdminerTablePrefixGroups extends Plugin
         return true;
     }
 
-    private function prefixGroupsRenderSelectLink(string $name): string
+    private function groupsRenderSelectLink(string $name): string
     {
         $isActive = ($_GET['select'] ?? null) === $name || ($_GET['edit'] ?? null) === $name;
 
@@ -76,20 +76,20 @@ class AdminerTablePrefixGroups extends Plugin
         }
 
         return '<a href="' . h(ME) . 'select=' . urlencode($name) . '"'
-            . bold($isActive, 'select hover adminer-prefix-select-link')
+            . bold($isActive, 'select hover table-groups-select-link')
             . " title='" . h(lang(50)) . "'"
             . " aria-label='" . h(lang(50)) . "'>"
-            . '<svg class="adminer-prefix-eye" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">'
+            . '<svg class="table-groups-eye" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">'
             . '<path fill="currentColor" d="M12 5c-5 0-9 5-10 7 1 2 5 7 10 7s9-5 10-7c-1-2-5-7-10-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>'
             . '</svg>'
-            . '<span class="adminer-prefix-select-text">' . h(lang(89)) . '</span>'
+            . '<span class="table-groups-select-text">' . h(lang(89)) . '</span>'
             . '</a>';
     }
 
     /**
      * @param array<string,mixed> $status
      */
-    private function prefixGroupsRenderStructureLink(string $name, array $status, string $displayName): string
+    private function groupsRenderStructureLink(string $name, array $status, string $displayName): string
     {
         if (!support('table') && !support('indexes')) {
             return '<span>' . $displayName . '</span>';
@@ -113,7 +113,7 @@ class AdminerTablePrefixGroups extends Plugin
     }
 
     /** @return array<string,string> */
-    private function prefixGroupsLabels(): array
+    private function groupsLabels(): array
     {
         $translations = [
             'en' => [

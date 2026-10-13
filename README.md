@@ -17,10 +17,10 @@ Copy the plugin and assets alongside Adminer using this layout:
 ```text
 adminer.php
 adminer-plugins/
-  table-prefix-groups.php
+  table-groups.php
   assets/
-    adminer-prefix-groups.css
-    adminer-prefix-groups.js
+    table-groups.css
+    table-groups.js
 ```
 
 Adminer 6.1.2 automatically discovers the plugin in `adminer-plugins/`.
@@ -34,10 +34,10 @@ To customize settings, create `adminer-plugins.php` beside `adminer.php`:
 ```php
 <?php
 
-use Adminer\AdminerTablePrefixGroups;
+use Adminer\AdminerTableGroups;
 
 return [
-    new AdminerTablePrefixGroups(
+    new AdminerTableGroups(
         otherLabel: 'Pozostałe',
         tableCountLabel: 'tab.',
         viewCountLabel: 'widoki',
@@ -48,18 +48,18 @@ return [
 
 Adminer loads the class from `adminer-plugins/` before reading this configuration.
 Optional `cssFile` and `jsFile` arguments override the browser URLs, with defaults
-`adminer-plugins/assets/adminer-prefix-groups.css` and
-`adminer-plugins/assets/adminer-prefix-groups.js`. Keep the on-disk `assets/`
+`adminer-plugins/assets/table-groups.css` and
+`adminer-plugins/assets/table-groups.js`. Keep the on-disk `assets/`
 directory beside the plugin even when overriding URLs.
 
 | Argument | Default | Purpose |
 | --- | --- | --- |
-| `cssFile` | `adminer-plugins/assets/adminer-prefix-groups.css` | Stylesheet URL relative to the Adminer page |
+| `cssFile` | `adminer-plugins/assets/table-groups.css` | Stylesheet URL relative to the Adminer page |
 | `otherLabel` | Automatic translation | Label for unassigned objects |
 | `tableCountLabel` | Automatic translation | Label for table counts |
 | `viewCountLabel` | Automatic translation | Label for view counts |
 | `useSelectIcon` | `true` | Use an eye icon for the data link. Set to `false` for a text link |
-| `jsFile` | `adminer-plugins/assets/adminer-prefix-groups.js` | JavaScript URL relative to the Adminer page |
+| `jsFile` | `adminer-plugins/assets/table-groups.js` | JavaScript URL relative to the Adminer page |
 
 ## Usage
 
@@ -112,10 +112,10 @@ docker compose -f examples/docker-compose.adminer.yml up
 Run locally:
 
 ```bash
-php -l table-prefix-groups.php
+php -l table-groups.php
 php -l tests/smoke.php
 php -l docker/adminer6-plugin.php
-node --check assets/adminer-prefix-groups.js
+node --check assets/table-groups.js
 php tests/smoke.php
 ```
 

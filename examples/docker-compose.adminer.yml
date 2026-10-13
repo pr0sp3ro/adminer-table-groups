@@ -4,6 +4,6 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../docker/adminer6-plugin.php:/var/www/html/plugins-enabled/table-prefix-groups.php:ro
-      - ../table-prefix-groups.php:/var/www/html/adminer-plugins/table-prefix-groups.php:ro
+      - ../docker/adminer6-plugin.php:/var/www/html/plugins-enabled/table-groups.php:ro
+      - ../table-groups.php:/var/www/html/adminer-plugins/table-groups.php:ro
       - ../assets:/var/www/html/adminer-plugins/assets:ro

@@ -54,7 +54,7 @@ namespace Adminer {
 }
 
 namespace {
-    require __DIR__ . '/../table-prefix-groups.php';
+    require __DIR__ . '/../table-groups.php';
 
     $_GET['select'] = 'crm_contact';
     $_GET['view']   = 'report';
@@ -70,7 +70,7 @@ namespace {
         'odd"<name>'  => ['Name' => 'odd"<name>'],
     ];
 
-    $plugin = new Adminer\AdminerTablePrefixGroups();
+    $plugin = new Adminer\AdminerTableGroups();
     ob_start();
     $handled = $plugin->tablesPrint($tables);
     $html    = (string) ob_get_clean();
@@ -78,8 +78,8 @@ namespace {
     $expected = [
         'data-groups-config=',
         'data-table-name="crm_contact"',
-        'class="active select hover adminer-prefix-select-link"',
-        'adminer-prefix-eye',
+        'class="active select hover table-groups-select-link"',
+        'table-groups-eye',
         'select=crm_contact',
         'table=crm_contact',
         'class="active view"',
@@ -104,7 +104,7 @@ namespace {
     }
 
     if (str_contains($html, '<summary>')) {
-        throw new RuntimeException('PHP must not automatically create prefix groups.');
+        throw new RuntimeException('PHP must render an ungrouped list for JavaScript to organize.');
     }
 
     echo "smoke ok\n";

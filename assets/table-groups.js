@@ -65,11 +65,11 @@
     }
 
     const panel = document.createElement('details');
-    panel.className = 'adminer-groups-manager';
+    panel.className = 'table-groups-manager';
     panel.append(element('summary', labels.manage));
     const controls = document.createElement('div');
     panel.append(controls);
-    const notice = element('p', warning, 'adminer-groups-notice');
+    const notice = element('p', warning, 'table-groups-notice');
     notice.setAttribute('role', 'status');
     list.before(panel, notice);
 
@@ -103,7 +103,7 @@
     }
 
     function groupEditor(group) {
-        const row = element('div', '', 'adminer-groups-editor');
+        const row = element('div', '', 'table-groups-editor');
         const label = element('label', group ? group.name : labels.newGroup);
         const input = document.createElement('input');
         input.type = 'text';
@@ -165,7 +165,7 @@
             controls.append(groupEditor(group));
         }
 
-        const assignments = element('div', '', 'adminer-groups-assignments');
+        const assignments = element('div', '', 'table-groups-assignments');
 
         for (const object of objects) {
             const name = object.dataset.tableName;
@@ -203,14 +203,14 @@
                 continue;
             }
 
-            const item = element('li', '', 'adminer-prefix-group');
+            const item = element('li', '', 'table-groups-group');
             const details = document.createElement('details');
             details.open = !group.id || members.some(object => object.querySelector('a.active'));
             const summary = document.createElement('summary');
             const views = members.filter(object => object.dataset.view === '1').length;
             const count = labels.tables + ': ' + (members.length - views)
                 + (views ? ', ' + labels.views + ': ' + views : '');
-            summary.append(element('span', group.name, 'adminer-prefix-label'), element('span', count, 'adminer-prefix-count'));
+            summary.append(element('span', group.name, 'table-groups-label'), element('span', count, 'table-groups-count'));
             const children = document.createElement('ul');
             children.append(...members);
             details.append(summary, children);

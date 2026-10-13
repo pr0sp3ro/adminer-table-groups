@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use Adminer\AdminerTablePrefixGroups;
+use Adminer\AdminerTableGroups;
 
-require_once __DIR__ . '/../adminer-plugins/table-prefix-groups.php';
+require_once __DIR__ . '/../adminer-plugins/table-groups.php';
 
-return new AdminerTablePrefixGroups();
+return new AdminerTableGroups();
