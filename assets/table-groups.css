@@ -38,6 +38,11 @@
   gap: 0.35em;
 }
 
+/* The flex rule above outranks Adminer's .hidden, which the tables filter relies on. */
+#tables.table-groups li.hidden {
+  display: none;
+}
+
 #tables.table-groups .table-groups-select-link {
   align-items: center;
   border-radius: 0.2em;
